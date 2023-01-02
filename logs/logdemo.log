@@ -1,0 +1,12 @@
+14:07:08.038 [main] INFO  com.sauceDemo.base - nueva info
+14:08:43.019 [main] INFO  com.sauceDemo.base - nueva info
+14:10:22.118 [main] INFO  com.sauceDemo.base - nueva info
+14:13:26.999 [main] INFO  com.sauceDemo.base - nueva info
+14:14:57.620 [main] INFO  com.sauceDemo.base - null
+14:15:46.280 [main] INFO  com.sauceDemo.base - java.lang.AssertionError: expected [true] but found [false]
+14:17:39.045 [main] INFO  com.sauceDemo.base - se corre el test  Default test
+14:17:40.224 [main] ERROR com.sauceDemo.base - java.lang.AssertionError: expected [true] but found [false]
+14:19:39.574 [main] ERROR com.sauceDemo.base - corrio el test  loginPageTest java.lang.AssertionError: expected [true] but found [false]
+14:20:42.968 [main] ERROR com.sauceDemo.base - nombre de test loginPageTest falla: java.lang.AssertionError: expected [true] but found [false]
+17:31:57.041 [main] ERROR com.sauceDemo.base - nombre de test loginPageTest falla: java.lang.AssertionError: expected [true] but found [false]
+17:41:04.489 [main] ERROR LogsApp - nombre de test loginPageTest falla: java.lang.AssertionError: expected [true] but found [false]

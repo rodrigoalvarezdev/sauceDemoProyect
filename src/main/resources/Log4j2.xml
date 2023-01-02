@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+	 <!--folder donde se crea el archivo -->
+    <Property name="filename">./logs</Property>
+  </Properties>
+  <Appenders>
+   <!--nombre del archivo -->
+	<RollingFile name="file" fileName="${filename}/logdemo.log" filePattern="${filename}/logdemo-%d{HH-mm-ss-SSS}.log">
+		<PatternLayout>
+			<pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+		</PatternLayout>
+		<SizeBasedTriggeringPolicy size="1 KB" />
+	</RollingFile>
+  </Appenders>
+  <Loggers>
+  	<!--nivel de logs para mostrar (error, trace, info) -->
+    <Root level="info">
+      <AppenderRef ref="file"/>
+    </Root>
+  </Loggers>
+</Configuration>

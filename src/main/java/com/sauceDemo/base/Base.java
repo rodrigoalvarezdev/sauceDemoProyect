@@ -20,12 +20,14 @@ import com.sauceDemo.util.LogsApp;
 public class Base {
 	@BeforeSuite(alwaysRun = true, groups = {"regresion"})
 	public void beforeSuite() {
+		ExtentManager.initReport();
 		LaunchConfig.loadConfig();
+		
 	}
 	
 	@AfterSuite(alwaysRun = true, groups = {"regresion"})
 	public void afterSuite(){
-		ExtentManager.extentRep().setSystemInfo("OS", System.getProperty("os.name"));
+		//ExtentManager.extentRep().setSystemInfo("OS", System.getProperty("os.name"));
 		ExtentManager.closeReport();
 	}
 	
@@ -33,27 +35,16 @@ public class Base {
 	public void setUp(ITestContext context) {
 		String suiteBrowser = context.getCurrentXmlTest().getParameter("browser");
 		String browserUp = suiteBrowser != null ? suiteBrowser : "chrome";
-		System.out.println(suiteBrowser);
-		System.out.println(browserUp);
 		LaunchConfig.lauchApp(browserUp);
 	}
 	
 	@AfterMethod(alwaysRun = true, groups = {"regresion"})
 	public void tearDown(ITestResult result, ITestContext context) {
-		Capabilities capabilities = ((RemoteWebDriver)LaunchConfig.getDriver()).getCapabilities();
 		System.out.println(result.getName());
 		if(result.getStatus() == ITestResult.FAILURE) {
 			System.out.println(result.getThrowable());
-			ExtentManager
-			.extentTest(result.getName())
-			.assignAuthor("Rodrigo alvarez")
-			.assignDevice(capabilities.getBrowserName())
-			.assignCategory(context.getIncludedGroups())
-			.log(Status.FAIL, "screen")
-			.addScreenCaptureFromBase64String(Action.screenshot());
-			LogsApp.error("nombre de test "+ result.getName()+" falla: "+result.getThrowable());
 		}else {
-			ExtentManager.extentTest(result.getName());
+			System.out.println("paso "+result.getName());
 		}
 		LaunchConfig.getDriver().quit();
 	}

@@ -13,7 +13,7 @@ public class LoginPageTest extends Base {
 	public void loginPageTest(String user, String password) {
 		LoginPage loginPage = new LoginPage();
 		loginPage.loginApp(user, password);
-		Assert.assertTrue(true);
+		Assert.assertTrue(false);
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {

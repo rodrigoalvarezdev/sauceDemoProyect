@@ -3,6 +3,7 @@ package com.sauceDemo.util;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -16,13 +17,18 @@ public class LaunchConfig {
 	public static RemoteWebDriver getDriver() {
 		return driver.get();
 	}
+	
+	public static Capabilities retCapabilities() {
+		Capabilities capabilities = ((RemoteWebDriver)getDriver()).getCapabilities();
+		return capabilities;
+	}
+	
 	public static void loadConfig() {
 		try {
 			ExtentManager.initReport();
 			prop = new Properties();
 			FileInputStream F = new FileInputStream("props\\config.properties");
-			prop.load(F);
-			
+			prop.load(F);		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
